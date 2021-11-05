@@ -1,0 +1,19 @@
+compute_engine_instance:
+  # Image list available via
+  # gcloud compute images list --project freebsd-org-cloud-dev --no-standard-images
+  platform: freebsd
+  image_project: freebsd-org-cloud-dev
+  image: freebsd-13-0-release-amd64
+  cpu: 1
+  memory: 2G
+  disk: 40
+
+task:
+  timeout_in: 120m
+  install_script:
+  - pkg install -y bash rust
+  script:
+  - ./scripts/install/install.sh --accept-all-defaults --install-dir /usr/local/bin/
+  smoke_test_script:
+  - /usr/local/bin/oci --help
+  - /usr/local/bin/oci --version
