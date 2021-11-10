@@ -13,7 +13,7 @@ task:
   install_script:
   - pkg install -y bash rust
   script:
-  - ./scripts/install/install.sh --accept-all-defaults --install-dir /usr/local/bin/
+  - ./scripts/install/install.sh --accept-all-defaults --install-dir /usr/local/bin/ --exec-dir /usr/local/bin/
   - ls /bin/*oci* /usr/bin/*oci* /usr/local/bin/*oci*
   smoke_test_script:
   - /usr/local/bin/oci --help
